@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Load and display form 1`] = `[Function]`;
+
+exports[`Test Scenarios calling handleSubmit Test Submit button 1`] = `[Function]`;
+
+exports[`Test Scenarios calling handleSubmit Test case 1 - correct conversion from Farenheit to Rankine 1`] = `[Function]`;
+
+exports[`Test Scenarios calling handleSubmit Test case 2 - incorrect conversion from Farenheit to Rankine (Student Response wron decimal roundup) 1`] = `[Function]`;
+
+exports[`Test Scenarios calling handleSubmit Test case 3 - incorrect conversion from Kelvin to Fahrenheit (Student Response wrong decimal roundup) 1`] = `[Function]`;
+
+exports[`Test Scenarios calling handleSubmit Test case 4 - correct conversion from Cups to Liters 1`] = `[Function]`;
+
+exports[`Test Scenarios calling handleSubmit Test case 5 - invalid conversion from Gallons to Kelvin 1`] = `[Function]`;
+
+exports[`Test Scenarios calling handleSubmit Test case 6 - incorrect conversion from Fahrenheit to Rankine (student response wrong input) 1`] = `[Function]`;
+
+exports[`Test Scenarios calling handleSubmit Test case 7 - invalid conversion From dog to Celsius (Input Unit of measure wrong input) 1`] = `[Function]`;
