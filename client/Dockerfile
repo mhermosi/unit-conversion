@@ -1,4 +1,4 @@
-FROM node:12.16-alpine
+FROM node:12.16.3-alpine
 
 WORKDIR /client
 
@@ -7,6 +7,8 @@ COPY package*.json /client/
 RUN npm install
 
 COPY . /client/
+
+RUN npm build
 
 EXPOSE 3000
 

@@ -2,7 +2,7 @@ version: "2"
 
 services:
   client:
-    image: webapp-client
+    build: ./client/
     restart: always
     ports:
       - "3000:3000"
@@ -12,9 +12,9 @@ services:
     links:
       - api
     networks:
-      webappnetwork
+      - webappnetwork
   api:
-    image: webapp-api
+    build: .
     restart: always
     ports:
       - "5000:5000"
@@ -22,4 +22,8 @@ services:
       - ./api:/api
       - /api/node_modules
     networks:
-      webappnetwork
+      - webappnetwork
+networks:
+  webappnetwork:
+    driver: bridge
+
