@@ -14,10 +14,10 @@ services:
     networks:
       - webappnetwork
   api:
-    build: .
+    build: ./server/
     restart: always
     ports:
-      - "5000:5000"
+      - "8080:8080"
     volumes:
       - ./api:/api
       - /api/node_modules

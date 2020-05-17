@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function UnitConversionForm(props) {
+const UnitConversionForm = ({ api })  => {
 
     const [inputNumericalValue, setInputNumericalValue] = useState("");
     const [inputUnitOfMeasure,  setInputUnitOfMeasure]  = useState("");
@@ -18,7 +18,7 @@ export default function UnitConversionForm(props) {
             targetUnitOfMeasure: targetUnitOfMeasure
         });
 
-        const body = await props.api.conversion(jsonString);
+        const body = await api.conversion(jsonString);
         setResultOutput(body.output);
     }
 
@@ -51,3 +51,5 @@ export default function UnitConversionForm(props) {
         </form>
     );
 }
+
+export default UnitConversionForm;

@@ -6,12 +6,12 @@ WORKDIR /client
 ENV PATH /client/node_modules/.bin:$PATH
 COPY package.json /client/package.json
 
-RUN npm install --silent
-RUN npm install react-scripts -g --silent
+RUN yarn --silent
+RUN yarn add react-scripts -g --silent
 
 COPY . /client
 
-RUN npm run build
+RUN yarn build
 
 ### STAGE 2: Prod env ###
 
