@@ -16,7 +16,7 @@ const UnitConversionDropDowns = ({onChange}) => {
    };
 
     const [units] = useState([
-        { type: '',  label: 'Select Unit',       value: 'Select Unit' },
+        { type: '',  label: 'Select Unit',       value: '' },
         { type: 'T', label: '(Tº) Celsius',      value: 'Celsius' },
         { type: 'T', label: '(Tº) Kelvin',       value: 'Kelvin' },
         { type: 'T', label: '(Tº) Fahrenheit',   value: 'Fahrenheit' },
@@ -33,12 +33,16 @@ const UnitConversionDropDowns = ({onChange}) => {
     const [targetUnitOfMeasureList, setTargetUnitOfMeasureList] = useState([]);
 
     const handleChangeInputUnitOfMeasure = (event) => {
-        setTargetUnitOfMeasureList(units.filter( (u) => { return u.type === reverse_table[event.target.value]; }));
-        onChange(event.target.id, event.target.value);
+        const { id, value } = event.target;
+
+        setTargetUnitOfMeasureList(units.filter( (u) => { return u.type === '' || u.type === reverse_table[event.target.value]; }));
+        
+        onChange(id, value);
     }
 
     const handleChangeTargetUnitOfMeasure = (event) => {
-        onChange(event.target.id, event.target.value);
+        const { id, value } = event.target;
+        onChange(id, value);
     }
 
     return (
@@ -46,22 +50,24 @@ const UnitConversionDropDowns = ({onChange}) => {
         <Form.Group as={Row} controlId="inputUnitOfMeasure">
             <Form.Label column sm="4">Input Unit of Measure</Form.Label>
             <Col sm="8">
-                <Form.Control as="select" onChange={e => handleChangeInputUnitOfMeasure(e)}>
+                <Form.Control required as="select" onChange={e => handleChangeInputUnitOfMeasure(e)}>
                     {
                         units.map(({ label, value }) => (<option key={value} value={value}>{label}</option>))
                     }
                 </Form.Control>
+                <Form.Control.Feedback type="invalid">Please choose an Input Unit of Measure</Form.Control.Feedback>
             </Col>
         </Form.Group>
 
         <Form.Group as={Row} controlId="targetUnitOfMeasure" >
             <Form.Label column sm="4">Target Unit of Measure</Form.Label>
             <Col sm="8">
-                <Form.Control as="select" disabled={targetUnitOfMeasureList.length === 0} onChange={e => handleChangeTargetUnitOfMeasure(e)}>
+                <Form.Control required as="select" disabled={targetUnitOfMeasureList.length === 0} onChange={e => handleChangeTargetUnitOfMeasure(e)}>
                     {
                         targetUnitOfMeasureList.map(({ label, value }) => (<option key={value} value={value}>{label}</option>))
                     }
                 </Form.Control>
+                <Form.Control.Feedback type="invalid">Please choose a Target Unit of Measure</Form.Control.Feedback>
             </Col>
             
         </Form.Group>

@@ -10,20 +10,36 @@ const UnitConversionForm = ({ api })  => {
     const [targetUnitOfMeasure, setTargetUnitOfMeasure] = useState("");
     const [resultOutput,        setResultOutput]        = useState("");
     const [resultVariant,       setResultVariant]       = useState("");
+    const [validated,           setValidated]           = useState(false);
 
     const handleSubmit = async (event) => {
+        const form = event.currentTarget;
         event.preventDefault();        
+        if(form.checkValidity() === false) {
+            event.stopPropagation();
+        }
+       
+       setValidated(true);
 
-        const jsonString = JSON.stringify({
-            inputNumericalValue: inputNumericalValue,
-            inputUnitOfMeasure: inputUnitOfMeasure,
-            studentResponse: studentResponse,
-            targetUnitOfMeasure: targetUnitOfMeasure
-        });
+       const jsonString = JSON.stringify({
+           inputNumericalValue: inputNumericalValue,
+           inputUnitOfMeasure: inputUnitOfMeasure,
+           studentResponse: studentResponse,
+           targetUnitOfMeasure: targetUnitOfMeasure
+       });
 
-        const body = await api.conversion(jsonString);
-        setResultOutput(body.output);
-        setResultVariant(body.variant);
+       const body = await api.conversion(jsonString);
+       setResultOutput(body.output);
+       setResultVariant(body.variant);
+    }
+
+    const handleChangeInputTextValue = (event) => {
+        const { id, value } = event.target;
+        if(id === 'inputNumericalValue') {
+            setInputNumericalValue(value);
+        } else if(id === 'studentResponse') {
+            setStudentResponse(value);
+        }
     }
 
     const handleChangeUnitConversionDropDowns = (id, value) => {
@@ -35,11 +51,12 @@ const UnitConversionForm = ({ api })  => {
     }
 
     return(
-        <Form onSubmit={handleSubmit}>
+        <Form noValidate validated={validated} onSubmit={handleSubmit}>
             <Form.Group as={Row} controlId="inputNumericalValue">
                 <Form.Label column sm="4">Input Numerical Value</Form.Label>
                 <Col sm="8">
-                    <Form.Control type="text" value={inputNumericalValue} onChange={e => setInputNumericalValue(e.target.value)} />
+                    <Form.Control required type="number" value={inputNumericalValue} onChange={e => handleChangeInputTextValue(e)} />
+                    <Form.Control.Feedback type="invalid">Please provide an Input Numerical Value</Form.Control.Feedback>
                 </Col>
             </Form.Group>
             
@@ -48,7 +65,8 @@ const UnitConversionForm = ({ api })  => {
             <Form.Group as={Row} controlId="studentResponse">
                 <Form.Label column sm="4">Student Response</Form.Label>
                 <Col sm="8">
-                    <Form.Control type="text" value={studentResponse} onChange={e => setStudentResponse(e.target.value)}/>
+                    <Form.Control required type="number" value={studentResponse} onChange={e => handleChangeInputTextValue(e)}/>
+                    <Form.Control.Feedback type="invalid">Please provide a Student Response</Form.Control.Feedback>
                 </Col>
             </Form.Group>
             <Form.Group as={Row} controlId="output">
