@@ -3,7 +3,7 @@ import UnitConversionForm from '../components/unit-conversion-form';
 import { render, fireEvent, waitFor, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import axiosMock from 'axios';
-import Api from './mock_api';
+import { Api } from './mock_api';
 import cases from './cases';
 
 jest.mock('axios');
@@ -37,7 +37,6 @@ describe('Test Scenarios calling handleSubmit', () => {
          async (title, inputNumericalValue, inputUnitOfMeasure, targetUnitOfMeasure, studentResponse, expectedOutput) => {
 
         const url = '/api/verfify-conversion';
-
         const { container, asFragment } = render(<UnitConversionForm api={Api}/> );
     
         axiosMock.get.mockResolvedValueOnce({
@@ -45,8 +44,8 @@ describe('Test Scenarios calling handleSubmit', () => {
         });
 
         const input1 = container.querySelector('input[id=inputNumericalValue]');
-        const input2 = container.querySelector('input[id=inputUnitOfMeasure]'); 
-        const input3 = container.querySelector('input[id=targetUnitOfMeasure]');
+        const input2 = container.querySelector('select[id=inputUnitOfMeasure]'); 
+        const input3 = container.querySelector('select[id=targetUnitOfMeasure]');
         const input4 = container.querySelector('input[id=studentResponse]');
 
         

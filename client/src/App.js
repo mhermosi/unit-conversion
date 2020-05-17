@@ -2,9 +2,9 @@ import React from 'react';
 import './App.css';
 import UnitConversionForm from './components/unit-conversion-form';
 
-const Api = require('./services/api');
+const Api = require('./services/api').Api;
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <UnitConversionForm api={Api}/>

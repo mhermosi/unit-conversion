@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Load and display All Units 1`] = `[Function]`;
+
+exports[`Select Temperature and render Temperature only on second dropdown 1`] = `[Function]`;
+
+exports[`Select Volume unit and render Volume units only on second dropdown 1`] = `[Function]`;

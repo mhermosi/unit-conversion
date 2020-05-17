@@ -25,6 +25,10 @@
   width: 100px;
 }
 
+.App form div select {
+  width: 130px;
+}
+
 .App form div#output {
   height: 20px;
 }

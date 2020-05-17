@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import UnitConversionDropDowns from './unit-conversion-dropdowns';
 
 const UnitConversionForm = ({ api })  => {
 
@@ -22,6 +23,14 @@ const UnitConversionForm = ({ api })  => {
         setResultOutput(body.output);
     }
 
+    const handleChangeUnitConversionDropDowns = (id, value) => {
+        if(id === 'inputUnitOfMeasure') {
+            setInputUnitOfMeasure(value);
+        } else if(id === 'targetUnitOfMeasure') {
+            setTargetUnitOfMeasure(value);
+        }
+    }
+
     return(
         <form onSubmit={handleSubmit}>
             <div>
@@ -29,15 +38,7 @@ const UnitConversionForm = ({ api })  => {
                 <input type="text" name="inputNumericalValue" id="inputNumericalValue" value={inputNumericalValue} onChange={e => setInputNumericalValue(e.target.value)} />
             </div>
             
-            <div>
-                <label htmlFor="inputUnitOfMeasure">Input Unit of Measure</label>
-                <input type="text" name="inputUnitOfMeasure" id="inputUnitOfMeasure" value={inputUnitOfMeasure} onChange={e => setInputUnitOfMeasure(e.target.value)} />
-            </div>
-
-            <div>
-                <label htmlFor="targetUnitOfMeasure">Target Unit of Measure</label>
-                <input type="text" name="targetUnitOfMeasure" id="targetUnitOfMeasure" value={targetUnitOfMeasure} onChange={e => setTargetUnitOfMeasure(e.target.value)} />
-            </div>
+            <UnitConversionDropDowns onChange={handleChangeUnitConversionDropDowns} />
 
             <div>
                 <label htmlFor="studentResponse">Student Response</label>

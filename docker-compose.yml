@@ -6,11 +6,9 @@ services:
     restart: always
     ports:
       - "80:80"
-    volumes:
-      - ./client:/client
-      - /client/node_modules
     links:
       - api
+    hostname: client
     networks:
       - webappnetwork
   api:
@@ -18,9 +16,7 @@ services:
     restart: always
     ports:
       - "8080:8080"
-    volumes:
-      - ./api:/api
-      - /api/node_modules
+    hostname: api
     networks:
       - webappnetwork
 networks:
