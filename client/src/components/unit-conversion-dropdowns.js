@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Form, Row, Col } from 'react-bootstrap';
 
 const UnitConversionDropDowns = ({onChange}) => {
     const reverse_table = {
@@ -40,25 +41,30 @@ const UnitConversionDropDowns = ({onChange}) => {
         onChange(event.target.id, event.target.value);
     }
 
-    return  (
+    return (
         <>
-            <div>
-                <label htmlFor="inputUnitOfMeasure">Input Unit of Measure</label>
-                <select name="inputUnitOfMeasure" id="inputUnitOfMeasure" onChange={e => handleChangeInputUnitOfMeasure(e)}>
+        <Form.Group as={Row} controlId="inputUnitOfMeasure">
+            <Form.Label column sm="4">Input Unit of Measure</Form.Label>
+            <Col sm="8">
+                <Form.Control as="select" onChange={e => handleChangeInputUnitOfMeasure(e)}>
                     {
                         units.map(({ label, value }) => (<option key={value} value={value}>{label}</option>))
                     }
-                </select>
-            </div>
+                </Form.Control>
+            </Col>
+        </Form.Group>
 
-            <div>
-                <label htmlFor="targetUnitOfMeasure">Target Unit of Measure</label>
-                <select name="targetUnitOfMeasure" id="targetUnitOfMeasure" disabled={targetUnitOfMeasureList.length === 0} onChange={e => handleChangeTargetUnitOfMeasure(e)}>
+        <Form.Group as={Row} controlId="targetUnitOfMeasure" >
+            <Form.Label column sm="4">Target Unit of Measure</Form.Label>
+            <Col sm="8">
+                <Form.Control as="select" disabled={targetUnitOfMeasureList.length === 0} onChange={e => handleChangeTargetUnitOfMeasure(e)}>
                     {
                         targetUnitOfMeasureList.map(({ label, value }) => (<option key={value} value={value}>{label}</option>))
                     }
-                </select>
-            </div>
+                </Form.Control>
+            </Col>
+            
+        </Form.Group>
         </>
     );
 }

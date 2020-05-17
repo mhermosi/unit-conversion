@@ -16,10 +16,12 @@ const units = {
 function verifyConversion(req, res) {
     const { inputNumericalValue, inputUnitOfMeasure, studentResponse, targetUnitOfMeasure} = req.body;
 
-    from_unit = units[inputUnitOfMeasure.toUpperCase()];
-    to_unit   = units[targetUnitOfMeasure.toUpperCase()];
+    let from_unit = units[inputUnitOfMeasure.toUpperCase()];
+    let to_unit   = units[targetUnitOfMeasure.toUpperCase()];
 
-    validated = 'invalid';
+    let validated = 'invalid';
+    let variant   = 'danger';
+
     console.log('======================================');
     console.log(`Values: from ${inputNumericalValue}, to: ${studentResponse}`);
     from_input = Number(inputNumericalValue);
@@ -36,6 +38,7 @@ function verifyConversion(req, res) {
                 console.log(`Converted value: ${conversion}`);
                 if(conversion == to_input) {
                     validated = 'correct';
+                    variant   = 'success';
                 } else {
                     validated = 'incorrect';
                 }
@@ -48,7 +51,7 @@ function verifyConversion(req, res) {
     console.log(`Response: ${validated}`);
     
 
-    res.send({ output: validated});
+    res.send({ output: validated, variant: variant });
 }
 
 module.exports = { verifyConversion };

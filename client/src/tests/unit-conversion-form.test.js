@@ -22,7 +22,7 @@ describe('Test Scenarios calling handleSubmit', () => {
         expect(output.textContent).toBe('');
         
         axiosMock.get.mockResolvedValueOnce({
-            output: 'invalid'
+            output: 'invalid', variant: 'danger'
         });
 
         fireEvent.click(screen.getByText('Submit'));
@@ -34,13 +34,13 @@ describe('Test Scenarios calling handleSubmit', () => {
 
     test.each(cases.test_cases)(
         '%s', 
-         async (title, inputNumericalValue, inputUnitOfMeasure, targetUnitOfMeasure, studentResponse, expectedOutput) => {
+         async (title, inputNumericalValue, inputUnitOfMeasure, targetUnitOfMeasure, studentResponse, expectedOutput, expectedVariant)  => {
 
         const url = '/api/verfify-conversion';
         const { container, asFragment } = render(<UnitConversionForm api={Api}/> );
     
         axiosMock.get.mockResolvedValueOnce({
-            output: expectedOutput
+            output: expectedOutput, variant: expectedVariant
         });
 
         const input1 = container.querySelector('input[id=inputNumericalValue]');
@@ -57,7 +57,7 @@ describe('Test Scenarios calling handleSubmit', () => {
         const output = container.querySelector('div[id=output]');
         expect(output.textContent).toBe('');
         
-        fireEvent.click(container.querySelector('input[type=submit]'));
+        fireEvent.click(container.querySelector('button[type=submit]'));
         
         //expect(axiosMock.get).toHaveBeenCalledTimes(count++);
         //expect(axiosMock.get).toHaveBeenCalledWith(url);
