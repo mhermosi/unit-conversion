@@ -10,7 +10,7 @@ describe('Test Scenarios calling API', () => {
 
     test.each(cases.test_cases)(
         '%s', 
-         async (title, inputNumericalValue, inputUnitOfMeasure, targetUnitOfMeasure, studentResponse, expectedOutput) => {
+         async (title, inputNumericalValue, inputUnitOfMeasure, targetUnitOfMeasure, studentResponse, expectedOutput, expectedVariant) => {
              
             const jsonRequestBody = JSON.stringify({
                 inputNumericalValue: inputNumericalValue,
@@ -25,6 +25,8 @@ describe('Test Scenarios calling API', () => {
                 
             expect(response.status).toBe(200);
             expect(response.body.output).toBe(expectedOutput);
+            expect(response.body.variant).toBe(expectedVariant);
+            
     });
     
 });

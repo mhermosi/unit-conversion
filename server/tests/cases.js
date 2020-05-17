@@ -6,7 +6,8 @@ const test_cases = [
         'Fahrenheit',
         'Rankine',
         543.9,
-        'correct'
+        'correct',
+        'success'
     ],
     [
         'Test case 2 - incorrect conversion from Farenheit to Rankine (Student Response wron decimal roundup)',
@@ -14,7 +15,8 @@ const test_cases = [
         'Fahrenheit',
         'Rankine',
         543.94,
-        'incorrect'
+        'incorrect',
+        'danger'
     ],
     [
         'Test case 3 - incorrect conversion from Kelvin to Fahrenheit (Student Response wrong decimal roundup)',
@@ -22,7 +24,8 @@ const test_cases = [
         'Kelvin',
         'Fahrenheit',
         111.554,
-        'incorrect'
+        'incorrect',
+        'danger'
     ],
     [
         'Test case 4 - correct conversion from Cups to Liters',
@@ -30,7 +33,8 @@ const test_cases = [
         'cups',
         'liters',
         6.1,
-        'correct'
+        'correct',
+        'success'
     ],
     [
         'Test case 5 - invalid conversion from Gallons to Kelvin',
@@ -38,7 +42,8 @@ const test_cases = [
         'gallons',
         'Kelvin',
         19.4,
-        'invalid'
+        'invalid',
+        'danger'
     ],
     [
         'Test case 6 - incorrect conversion from Fahrenheit to Rankine (student response wrong input)',
@@ -46,7 +51,8 @@ const test_cases = [
         'Fahrenheit',
         'Rankine',
         'dog',
-        'incorrect'
+        'incorrect',
+        'danger'
     ],
     [
         'Test case 7 - invalid conversion From dog to Celsius (Input Unit of measure wrong input)',
@@ -54,7 +60,8 @@ const test_cases = [
         'dog',
         'Celsius',
         '45.32',
-        'invalid'
+        'invalid',
+        'danger'
     ],
 ];
 
