@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Container, Row, Col, Navbar } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import UnitConversionForm from '../components/unit-conversion-form';
 
 const Api = require('../services/api').Api;
