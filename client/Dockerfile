@@ -1,15 +1,22 @@
-FROM node:12.16.3-alpine
+### STAGE 1: Build ###
+FROM node:12.16.3-alpine as build
 
 WORKDIR /client
 
-COPY package*.json /client/
+ENV PATH /client/node_modules/.bin:$PATH
+COPY package.json /client/package.json
 
-RUN npm install
+RUN npm install --silent
+RUN npm install react-scripts -g --silent
 
-COPY . /client/
+COPY . /client
 
-RUN npm build
+RUN npm run build
 
-EXPOSE 3000
+### STAGE 2: Prod env ###
 
-CMD ["npm", "start"]
+FROM nginx:alpine
+
+COPY --from=build /client/build /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]

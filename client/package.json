@@ -1,6 +1,7 @@
 {
   "name": "unit-conversion",
   "version": "0.1.0",
+  "license": "UNLICENSED",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.7.0",
@@ -18,7 +19,6 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test2": "react-scripts test --env=jest-environment-jsdom-sixteen",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -44,5 +44,10 @@
   "proxy": "http://localhost:5000/",
   "resolutions": {
     "jest-environment-jsdom": "^26.0.1"
+  },
+  "engines": {
+    "node": ">=12.16.1",
+    "npm": ">=6.14.2",
+    "yarn": ">=1.22.4"
   }
 }
