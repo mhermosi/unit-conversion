@@ -30,7 +30,7 @@ function verifyConversion(req, res) {
         if(typeof from_unit !== 'undefined' && typeof to_unit  !== 'undefined') {
             console.log(`Converting from ${from_unit.code} to ${to_unit.code} value: ${inputNumericalValue}`);
             /**
-             * if the unit type are the same, and the code (Unit) are differenet we calculate the
+             * if the unit type are the same, and the code (Unit) are different we calculate the
              * conversion.
              */
             if(from_unit.type == to_unit.type && from_unit.code != to_unit.code)  {

@@ -8,16 +8,21 @@ server: A NodeJS express backend api server
 
 you can run this application in different ways.
 
-The simplest one is going to server directory and run the bundled execution
+The simplest one is run the following command sequence to 
+start the dev environment
 
 ```
+# cd client
+# yarn install
+# cd ..
 # cd server
+# yarn install
 # yarn dev
 ```
 
 this option will execute both the express server and the react application.
 you will see the Web Page on http://localhost:3000/ and the connection to the
-backend is proxied by package.json directive.
+backend is being proxy by package.json directive.
 
 
 Second option: Docker compose build.
@@ -32,12 +37,12 @@ you just have to run the following command on the root of the project
 ```
 
 This will create the images, then run the containers based on the configuration provided
-Again you can navigate to https://localhost/
+Again you can navigate to http://localhost/
 
 Note: you have to have available the ports 80 and 8080 for the Web Application and Backend
 respectively.
 
-To execute the test you can just run on each module
+To execute the test you can just run on each module (client and server)
 
 ```
 # yarn test

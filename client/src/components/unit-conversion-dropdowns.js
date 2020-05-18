@@ -15,7 +15,7 @@ const UnitConversionDropDowns = ({onChange}) => {
         'Gallons':      'V' 
    };
 
-    const [units] = useState([
+    const units = [
         { type: '',  label: 'Select Unit',       value: '' },
         { type: 'T', label: '(Tº) Celsius',      value: 'Celsius' },
         { type: 'T', label: '(Tº) Kelvin',       value: 'Kelvin' },
@@ -28,7 +28,7 @@ const UnitConversionDropDowns = ({onChange}) => {
         { type: 'V', label: '(Vol) Cups',         value: 'Cups' },
         { type: 'V', label: '(Vol) Cubic-Feet',   value: 'Cubic-Feet' },
         { type: 'V', label: '(Vol) Gallons',      value: 'Gallons' },
-    ]);
+    ];
 
     const [targetUnitOfMeasureList, setTargetUnitOfMeasureList] = useState([]);
 
@@ -50,7 +50,7 @@ const UnitConversionDropDowns = ({onChange}) => {
         <Form.Group as={Row} controlId="inputUnitOfMeasure">
             <Form.Label column sm="4">Input Unit of Measure</Form.Label>
             <Col sm="8">
-                <Form.Control required as="select" onChange={e => handleChangeInputUnitOfMeasure(e)}>
+                <Form.Control required as="select" onChange={handleChangeInputUnitOfMeasure}>
                     {
                         units.map(({ label, value }) => (<option key={value} value={value}>{label}</option>))
                     }
@@ -62,7 +62,7 @@ const UnitConversionDropDowns = ({onChange}) => {
         <Form.Group as={Row} controlId="targetUnitOfMeasure" >
             <Form.Label column sm="4">Target Unit of Measure</Form.Label>
             <Col sm="8">
-                <Form.Control required as="select" disabled={targetUnitOfMeasureList.length === 0} onChange={e => handleChangeTargetUnitOfMeasure(e)}>
+                <Form.Control required as="select" disabled={targetUnitOfMeasureList.length === 0} onChange={handleChangeTargetUnitOfMeasure}>
                     {
                         targetUnitOfMeasureList.map(({ label, value }) => (<option key={value} value={value}>{label}</option>))
                     }

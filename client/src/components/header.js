@@ -1,11 +1,9 @@
 import React from 'react';
-import logo from '../logo.svg';
 import { Navbar, Nav } from 'react-bootstrap';
 
+import logo from '../logo.svg';
 
-const Header = () => {
-
-    return (
+const Header = () => (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top" className="flex-md-nowrap p-0">
         <Navbar.Brand href="#home" sm={3} md={2} className="mr-0">
         <img
@@ -25,7 +23,6 @@ const Header = () => {
             </Nav>
         </Navbar.Collapse>
     </Navbar>
-    );
-}
+);
 
 export default Header;

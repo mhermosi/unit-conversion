@@ -1,15 +1,14 @@
 import React from 'react';
 import './App.css';
 import Header from './components/header';
-import MainPageLayoyut from './layouts/main';
-
+import MainPageLayout from './layouts/main';
 
 
 const App = () => {
   return (
     <div className="App">
       <Header />
-      <MainPageLayoyut />
+      <MainPageLayout />
     </div>
   );
 }

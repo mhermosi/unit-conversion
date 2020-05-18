@@ -13,10 +13,10 @@ describe('Test Scenarios calling API', () => {
          async (title, inputNumericalValue, inputUnitOfMeasure, targetUnitOfMeasure, studentResponse, expectedOutput, expectedVariant) => {
              
             const jsonRequestBody = JSON.stringify({
-                inputNumericalValue: inputNumericalValue,
-                inputUnitOfMeasure: inputUnitOfMeasure,
-                studentResponse: studentResponse,
-                targetUnitOfMeasure: targetUnitOfMeasure
+                inputNumericalValue,
+                inputUnitOfMeasure,
+                studentResponse,
+                targetUnitOfMeasure
             })
 
             const response = await request.post('/api/verify-conversion')
@@ -25,8 +25,6 @@ describe('Test Scenarios calling API', () => {
                 
             expect(response.status).toBe(200);
             expect(response.body.output).toBe(expectedOutput);
-            expect(response.body.variant).toBe(expectedVariant);
-            
+            expect(response.body.variant).toBe(expectedVariant);     
     });
-    
 });

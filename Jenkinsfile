@@ -87,6 +87,13 @@ pipeline {
               )
           }
       }
+      stage('EC2 Deployment') {
+          steps {
+            sh 'scp deployment/docker-compose.yml ubuntu@unit.clcklabs.com:'
+            sh 'ssh ubuntu@unit.clcklabs.com docker-compose up -d --force-recreate'
+          }
+      }
+
    }
 
    post {

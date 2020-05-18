@@ -3,22 +3,22 @@ import UnitConversionForm from '../components/unit-conversion-form';
 import { render, fireEvent, waitFor, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import axiosMock from 'axios';
-import { Api } from './mock_api';
+import conversion from './mock_api';
 import cases from './cases';
 
 jest.mock('axios');
 
 
 test('Load and display form', async () => {
-    const { asFragment } = render(<UnitConversionForm  api={Api} /> );
+    const { asFragment } = render(<UnitConversionForm  api={conversion} /> );
     expect(asFragment).toMatchSnapshot();
 });
 
 describe('Test Scenarios calling handleSubmit', () => {
 
     it('Test Submit button', async () => {
-        const url = '/api/verfify-conversion';
-        const { container, asFragment } = render(<UnitConversionForm api={Api} /> );
+        const url = '/api/verify-conversion';
+        const { container, asFragment } = render(<UnitConversionForm api={conversion} /> );
         expect(output.textContent).toBe('');
         
         axiosMock.get.mockResolvedValueOnce({
@@ -36,8 +36,8 @@ describe('Test Scenarios calling handleSubmit', () => {
         '%s', 
          async (title, inputNumericalValue, inputUnitOfMeasure, targetUnitOfMeasure, studentResponse, expectedOutput, expectedVariant)  => {
 
-        const url = '/api/verfify-conversion';
-        const { container, asFragment } = render(<UnitConversionForm api={Api}/> );
+        const url = '/api/verify-conversion';
+        const { container, asFragment } = render(<UnitConversionForm api={conversion}/> );
     
         axiosMock.get.mockResolvedValueOnce({
             output: expectedOutput, variant: expectedVariant

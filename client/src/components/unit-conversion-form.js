@@ -22,13 +22,13 @@ const UnitConversionForm = ({ api })  => {
        setValidated(true);
 
        const jsonString = JSON.stringify({
-           inputNumericalValue: inputNumericalValue,
-           inputUnitOfMeasure: inputUnitOfMeasure,
-           studentResponse: studentResponse,
-           targetUnitOfMeasure: targetUnitOfMeasure
+           inputNumericalValue,
+           inputUnitOfMeasure,
+           studentResponse,
+           targetUnitOfMeasure
        });
 
-       const body = await api.conversion(jsonString);
+       const body = await api(jsonString);
        setResultOutput(body.output);
        setResultVariant(body.variant);
     }
@@ -55,7 +55,7 @@ const UnitConversionForm = ({ api })  => {
             <Form.Group as={Row} controlId="inputNumericalValue">
                 <Form.Label column sm="4">Input Numerical Value</Form.Label>
                 <Col sm="8">
-                    <Form.Control required type="number" value={inputNumericalValue} onChange={e => handleChangeInputTextValue(e)} />
+                    <Form.Control required type="number" value={inputNumericalValue} onChange={handleChangeInputTextValue} />
                     <Form.Control.Feedback type="invalid">Please provide an Input Numerical Value</Form.Control.Feedback>
                 </Col>
             </Form.Group>
@@ -65,7 +65,7 @@ const UnitConversionForm = ({ api })  => {
             <Form.Group as={Row} controlId="studentResponse">
                 <Form.Label column sm="4">Student Response</Form.Label>
                 <Col sm="8">
-                    <Form.Control required type="number" value={studentResponse} onChange={e => handleChangeInputTextValue(e)}/>
+                    <Form.Control required type="number" value={studentResponse} onChange={handleChangeInputTextValue}/>
                     <Form.Control.Feedback type="invalid">Please provide a Student Response</Form.Control.Feedback>
                 </Col>
             </Form.Group>
