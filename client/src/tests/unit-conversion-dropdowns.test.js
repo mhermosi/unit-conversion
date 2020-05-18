@@ -66,7 +66,7 @@ test('Select Temperature and render Temperature only on second dropdown', () => 
     expect(select1.value).toBe(selection.value);
     expect(select2.hasAttribute('disabled')).toBe(false);
     expect(select2.value).toBe('');
-    expect(select2.childElementCount).toBe(5);
+    expect(select2.childElementCount).toBe(4);
 
     expect(asFragment).toMatchSnapshot();
 
@@ -90,7 +90,7 @@ test('Select Volume unit and render Volume units only on second dropdown', () =>
     expect(select1.value).toBe(selection.value);
     expect(select2.hasAttribute('disabled')).toBe(false);
     expect(select2.value).toBe('');
-    expect(select2.childElementCount).toBe(7);
+    expect(select2.childElementCount).toBe(6);
 
     expect(asFragment).toMatchSnapshot();
 

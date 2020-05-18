@@ -35,7 +35,7 @@ const UnitConversionDropDowns = ({onChange}) => {
     const handleChangeInputUnitOfMeasure = (event) => {
         const { id, value } = event.target;
 
-        setTargetUnitOfMeasureList(units.filter( (u) => { return u.type === '' || u.type === reverse_table[event.target.value]; }));
+        setTargetUnitOfMeasureList(units.filter( (u) => { return u.type === '' || (u.type === reverse_table[event.target.value] && u.value !== event.target.value); }));
         
         onChange(id, value);
     }
