@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "license": "UNLICENSED",
   "private": true,
+  "author": "Martin Hermosilla <mhermosi@gmail.com> (https://linkedin.com/in/martinhermosilla)",
   "scripts": {
     "client": "cd ../client && yarn start",
     "start": "node start.js",
