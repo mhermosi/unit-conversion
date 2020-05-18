@@ -53,3 +53,14 @@ To execute the test you can just run on each module (client and server)
  Backend service is controlling the spawn of the express server to execute the test cases against the actual
  express server.
  
+ A CI/CD Jenkins Pipeline has been created for this project on a provisioned server https://ci.clcklabs.com, you can access to this
+ server using your GitHub account.
+
+The Docker Images are being built on DockerHub server as my Jenkins server does not allow me to install extra required binaries to
+build the images there. a web hook has been used to trigger the build
+
+The final step is to deploy the scripts and config files to run the generated containers on AWS EC2 instance created for this assignment
+
+You can access the live build on the following url: https://unit.clcklabs.com
+
+
